@@ -1,0 +1,12 @@
+# Block large database files
+*.bak
+*.mdf
+*.ldf
+
+# Block sensitive config
+secrets.sql
+connection_strings.txt
+
+# Block OS clutter
+.DS_Store
+Thumbs.db

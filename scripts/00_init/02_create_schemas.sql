@@ -10,31 +10,17 @@
 -- ============================================================
 
 
--- CHECKING IF THE BRONZE SCHEMA ALREADY EXISTS AND IF IT DOES THEN DROP IT AND CREATE NEW ONE.
-IF EXISTS (SELECT * FROM sys.schemas WHERE name = 'bronze')
-DROP SCHEMA bronze;
-BEGIN
+USE AdventureWorksDW;
+GO
+
+IF NOT EXISTS (SELECT 1 FROM sys.schemas WHERE name = 'bronze')
     EXEC('CREATE SCHEMA bronze');
-END;
 GO
 
-
-
--- CHECKING IF THE SILVER SCHEMA ALREADY EXISTS AND IF IT DOES THEN DROP IT AND CREATE NEW ONE.
-IF EXISTS (SELECT * FROM sys.schemas WHERE name = 'silver')
-DROP SCHEMA silver;
-BEGIN
+IF NOT EXISTS (SELECT 1 FROM sys.schemas WHERE name = 'silver')
     EXEC('CREATE SCHEMA silver');
-END;
 GO
 
-
-
-
--- CHECKING IF THE SILVER SCHEMA ALREADY EXISTS AND IF IT DOES THEN DROP IT AND CREATE NEW ONE.
-IF EXISTS (SELECT * FROM sys.schemas WHERE name = 'gold')
-DROP SCHEMA gold;
-BEGIN
+IF NOT EXISTS (SELECT 1 FROM sys.schemas WHERE name = 'gold')
     EXEC('CREATE SCHEMA gold');
-END;
 GO

@@ -304,6 +304,89 @@ BEGIN
 
     -- ─────────────────────────────────────────
 
+    -- ─────────────────────────────────────────
+    -- LOOKUP / REFERENCE TABLES
+    -- ─────────────────────────────────────────
+
+    PRINT '<< TRUNCATING TABLE : bronze.brz_ship_method';
+    TRUNCATE TABLE bronze.brz_ship_method;
+    PRINT '<< INSERTING DATA INTO : bronze.brz_ship_method';
+    SET @table_start = GETDATE();
+    INSERT INTO bronze.brz_ship_method (
+        ShipMethodID, Name, ShipBase, ShipRate
+    )
+    SELECT
+        ShipMethodID, Name, ShipBase, ShipRate
+    FROM AdventureWorks2022.Purchasing.ShipMethod;
+    SET @table_end = GETDATE();
+    PRINT 'Done: brz_ship_method | Time: ' + CAST(DATEDIFF(SECOND, @table_start, @table_end) AS NVARCHAR) + ' seconds';
+
+    -- ─────────────────────────────────────────
+
+    PRINT '<< TRUNCATING TABLE : bronze.brz_special_offer';
+    TRUNCATE TABLE bronze.brz_special_offer;
+    PRINT '<< INSERTING DATA INTO : bronze.brz_special_offer';
+    SET @table_start = GETDATE();
+    INSERT INTO bronze.brz_special_offer (
+        SpecialOfferID, Description, DiscountPct,
+        Type, Category, StartDate, EndDate, MinQty, MaxQty
+    )
+    SELECT
+        SpecialOfferID, Description, DiscountPct,
+        Type, Category, StartDate, EndDate, MinQty, MaxQty
+    FROM AdventureWorks2022.Sales.SpecialOffer;
+    SET @table_end = GETDATE();
+    PRINT 'Done: brz_special_offer | Time: ' + CAST(DATEDIFF(SECOND, @table_start, @table_end) AS NVARCHAR) + ' seconds';
+
+    -- ─────────────────────────────────────────
+
+    PRINT '<< TRUNCATING TABLE : bronze.brz_sales_territory';
+    TRUNCATE TABLE bronze.brz_sales_territory;
+    PRINT '<< INSERTING DATA INTO : bronze.brz_sales_territory';
+    SET @table_start = GETDATE();
+    INSERT INTO bronze.brz_sales_territory (
+        TerritoryID, Name, CountryRegionCode,
+        [Group], SalesYTD, SalesLastYear, CostYTD, CostLastYear
+    )
+    SELECT
+        TerritoryID, Name, CountryRegionCode,
+        [Group], SalesYTD, SalesLastYear, CostYTD, CostLastYear
+    FROM AdventureWorks2022.Sales.SalesTerritory;
+    SET @table_end = GETDATE();
+    PRINT 'Done: brz_sales_territory | Time: ' + CAST(DATEDIFF(SECOND, @table_start, @table_end) AS NVARCHAR) + ' seconds';
+
+    -- ─────────────────────────────────────────
+
+    PRINT '<< TRUNCATING TABLE : bronze.brz_currency_rate';
+    TRUNCATE TABLE bronze.brz_currency_rate;
+    PRINT '<< INSERTING DATA INTO : bronze.brz_currency_rate';
+    SET @table_start = GETDATE();
+    INSERT INTO bronze.brz_currency_rate (
+        CurrencyRateID, CurrencyRateDate, FromCurrencyCode,
+        ToCurrencyCode, AverageRate, EndOfDayRate
+    )
+    SELECT
+        CurrencyRateID, CurrencyRateDate, FromCurrencyCode,
+        ToCurrencyCode, AverageRate, EndOfDayRate
+    FROM AdventureWorks2022.Sales.CurrencyRate;
+    SET @table_end = GETDATE();
+    PRINT 'Done: brz_currency_rate | Time: ' + CAST(DATEDIFF(SECOND, @table_start, @table_end) AS NVARCHAR) + ' seconds';
+
+    -- ─────────────────────────────────────────
+
+    PRINT '<< TRUNCATING TABLE : bronze.brz_country_region';
+    TRUNCATE TABLE bronze.brz_country_region;
+    PRINT '<< INSERTING DATA INTO : bronze.brz_country_region';
+    SET @table_start = GETDATE();
+    INSERT INTO bronze.brz_country_region (
+        CountryRegionCode, Name
+    )
+    SELECT
+        CountryRegionCode, Name
+    FROM AdventureWorks2022.Person.CountryRegion;
+    SET @table_end = GETDATE();
+    PRINT 'Done: brz_country_region | Time: ' + CAST(DATEDIFF(SECOND, @table_start, @table_end) AS NVARCHAR) + ' seconds';
+
     SET @layer_end = GETDATE();
     PRINT '========================================';
     PRINT 'Bronze Layer Load Complete!';

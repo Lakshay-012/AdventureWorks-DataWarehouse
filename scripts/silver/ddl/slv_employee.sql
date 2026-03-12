@@ -17,13 +17,13 @@ CREATE TABLE silver.slv_employee (
     LoginID             NVARCHAR(256)   NOT NULL,
     JobTitle            NVARCHAR(50)    NOT NULL,
     BirthDate           DATE            NOT NULL,
-    MaritalStatus       NCHAR(1)        NOT NULL,
-    Gender              NCHAR(1)        NOT NULL,
+    MaritalStatus       NVARCHAR(20)    NOT NULL,
+    Gender              NVARCHAR(20)    NOT NULL,
     HireDate            DATE            NOT NULL,
-    SalariedFlag        BIT             NOT NULL,
+    SalariedFlag        NVARCHAR(20)    NOT NULL,
     VacationHours       SMALLINT        NOT NULL,
     SickLeaveHours      SMALLINT        NOT NULL,
-    CurrentFlag         BIT             NOT NULL,
+    CurrentFlag         NVARCHAR(20)    NOT NULL,
     dwh_create_date     DATETIME        DEFAULT GETDATE()
 );
 GO

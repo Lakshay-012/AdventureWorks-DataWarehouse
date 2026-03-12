@@ -20,7 +20,7 @@ CREATE TABLE silver.slv_special_offer (
     StartDate       DATETIME        NOT NULL,
     EndDate         DATETIME        NOT NULL,
     MinQty          INT             NOT NULL,
-    MaxQty          INT             NULL,
+    MaxQty          INT             NOT NULL,
     dwh_create_date DATETIME        DEFAULT GETDATE()
 );
 GO

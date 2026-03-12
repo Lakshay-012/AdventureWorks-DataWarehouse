@@ -15,10 +15,10 @@ CREATE TABLE silver.slv_vendor (
     BusinessEntityID        INT             NOT NULL,
     AccountNumber           NVARCHAR(15)    NOT NULL,
     Name                    NVARCHAR(50)    NOT NULL,
-    CreditRating            TINYINT         NOT NULL,
-    PreferredVendorStatus   BIT             NOT NULL,
-    ActiveFlag              BIT             NOT NULL,
-    PurchasingWebServiceURL NVARCHAR(1024)  NULL,
+    CreditRating            NVARCHAR(20)    NOT NULL,
+    PreferredVendorStatus   NVARCHAR(20)    NOT NULL,
+    ActiveFlag              NVARCHAR(10)    NOT NULL,
+    PurchasingWebServiceURL NVARCHAR(1024)  NOT NULL,
     dwh_create_date         DATETIME        DEFAULT GETDATE()
 );
 GO

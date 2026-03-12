@@ -14,7 +14,7 @@ GO
 CREATE TABLE silver.slv_purchase_order_header (
     PurchaseOrderID     INT         NOT NULL,
     RevisionNumber      TINYINT     NOT NULL,
-    Status              TINYINT     NOT NULL,
+    Status              NVARCHAR(20) NOT NULL,
     EmployeeID          INT         NOT NULL,
     VendorID            INT         NOT NULL,
     ShipMethodID        INT         NOT NULL,

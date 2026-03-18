@@ -460,9 +460,9 @@ BEGIN
             ELSE 'N/A'
         END,
         ISNULL(Title, 'N/A'),
-        TRIM(FirstName),
+        ISNULL(TRIM(FirstName),'N/A'),
         ISNULL(TRIM(MiddleName), 'N/A'),
-        TRIM(LastName),
+        ISNULL(TRIM(LastName),'N/A'),
         ISNULL(Suffix, 'N/A'),
         CASE EmailPromotion
             WHEN 0 THEN 'No Promotion'
